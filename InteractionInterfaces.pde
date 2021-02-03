@@ -40,6 +40,8 @@ PFont f;
 int recPort = 9000;
 int sendPort = 6448;
 
+String wekinatorProjectName = "Project_1";
+
 void setup() {
   
   prepareExitHandler();
@@ -85,11 +87,20 @@ void setup() {
   
   
   
-  //launch Handpose-osc and Wekinator
+  //launch Handpose-osc (light) and Wekinator with preloaded project:
+  //https://yoyling.herokuapp.com/https/github.com/gonski/HandPose-OSC
+  //https://github.com/brannondorsey/wekimini
   String sketchPath = sketchPath();
   
   launch(sketchPath + "/HandPose-OSC.app");
-  launch(sketchPath + "/Wekinator.app");
+  //exec("java", "-jar", sketchPath + "/Wekinator/WekiMini.jar", sketchPath + "/WekinatorProjects" +"/" + wekinatorProjectName + "/" + wekinatorProjectName + ".wekproj");
+  exec("java", "-jar", sketchPath + "/Wekinator/WekiMini.jar", sketchPath + "/WekinatorProjects" +"/" + wekinatorProjectName + "/" + wekinatorProjectName + ".wekproj");
+
+   //exec("osascript" ,"-e", "\'tell application \\\"System Events\\\" to set visible of process \\\"WekiMiniRunner\\\" to false\'");
+  //launch(sketchPath + "/code/hideWekinator.scpt");
+  // hide wekinator
+  //exec("osascript" ,"-e", "\'tell application \"System Events\" to set visible of process \"WekiMiniRunner\" to false\'");
+  //String script = "tell application \"System Events\" to set visible of process \"WekiMiniRunner\" to false";
   
   
   /* start oscP5, listening for incoming messages at port 8007 */
@@ -131,7 +142,7 @@ System.out.println("SHUTDOWN HOOK");
   try {
     //exec("osascript -e 'quit app \"Wekinator\"'");
     exec("killall", "HandPose-OSC");
-    exec("killall", "Wekinator");
+    exec("killall", "java");
   }
   catch(Exception e) {
     e.printStackTrace();

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.illposed.osc"},{"l":"com.illposed.osc.utility"},{"l":"wekimini"},{"l":"wekimini.dtw.gui"},{"l":"wekimini.gui"},{"l":"wekimini.gui.path"},{"l":"wekimini.kadenze"},{"l":"wekimini.learning"},{"l":"wekimini.learning.dtw"},{"l":"wekimini.osc"},{"l":"wekimini.util"}];updateSearchResults();
