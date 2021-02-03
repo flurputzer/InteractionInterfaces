@@ -26,6 +26,8 @@ String firstKey;
 String secondKey;
 String thirdKey;
 
+String sketchPath;
+
 
 ControlP5 cp5;
 
@@ -37,8 +39,8 @@ float n,n1;
 
 
 PFont f;
-int recPort = 9000;
-int sendPort = 6448;
+int recPort = 8007;
+int sendPort = 8008;
 
 String wekinatorProjectName = "Project_1";
 
@@ -46,42 +48,69 @@ void setup() {
   
   prepareExitHandler();
   
-  size(400,600);
+  size(430,600);
   noStroke();
   cp5 = new ControlP5(this);
   
   // create a new button with name 'buttonA'
-  cp5.addButton("colorA")
-     .setValue(0)
-     .setPosition(100,100)
+  cp5.addButton("Record_output1")
+     .setValue(1)
+     .setPosition(10,10)
      .setSize(200,19)
      ;
   
   // and add another 2 buttons
-  cp5.addButton("colorB")
-     .setValue(100)
-     .setPosition(100,120)
+  cp5.addButton("Record_output2")
+     .setValue(2)
+     .setPosition(10,30)
      .setSize(200,19)
      ;
      
-  cp5.addButton("colorC")
-     .setPosition(100,140)
+  cp5.addButton("Record_output3")
+     .setValue(3)
+     .setPosition(10,50)
      .setSize(200,19)
+     ;
+  
+  cp5.addButton("Record_output4")
+     .setValue(4)
+     .setPosition(10,70)
+     .setSize(200,19)
+     ;
+  
+  cp5.addButton("Record_output5")
+     .setValue(5)
+     .setPosition(10,90)
+     .setSize(200,19)
+     ;
+     
+  cp5.addButton("Stop_Recording")
      .setValue(0)
+     .setPosition(10,90)
+     .setSize(200,19)
      ;
 
-  PImage[] imgs = {loadImage("button_a.png"),loadImage("button_b.png"),loadImage("button_c.png")};
-  cp5.addButton("play")
+ cp5.addButton("Show_Video")
+     .setValue(128)
+     .setPosition(220,10)
+     .setSize(200,19)
+     ;
+     
+  cp5.addButton("Hide_Video")
+     .setValue(128)
+     .setPosition(220,30)
+     .setSize(200,19)
+     ;
+ 
+  cp5.addButton("Start")
      .setValue(128)
      .setPosition(140,300)
-     .setImages(imgs)
      .updateSize()
      ;
      
-  cp5.addButton("playAgain")
+  cp5.addButton("Stop")
      .setValue(128)
      .setPosition(210,300)
-     .setImages(imgs)
      .updateSize()
      ;
   
@@ -90,7 +119,7 @@ void setup() {
   //launch Handpose-osc (light) and Wekinator with preloaded project:
   //https://yoyling.herokuapp.com/https/github.com/gonski/HandPose-OSC
   //https://github.com/brannondorsey/wekimini
-  String sketchPath = sketchPath();
+  sketchPath = sketchPath();
   
   launch(sketchPath + "/HandPose-OSC.app");
   //exec("java", "-jar", sketchPath + "/Wekinator/WekiMini.jar", sketchPath + "/WekinatorProjects" +"/" + wekinatorProjectName + "/" + wekinatorProjectName + ".wekproj");
@@ -104,8 +133,8 @@ void setup() {
   
   
   /* start oscP5, listening for incoming messages at port 8007 */
-  oscP5 = new OscP5(this,8007);
-  myRemoteLocation = new NetAddress("127.0.0.1",6448);
+  oscP5 = new OscP5(this,recPort);
+  myRemoteLocation = new NetAddress("127.0.0.1",sendPort);
   firstKey = "VK_CONTROL";
   secondKey = "VK_UP";
   thirdKey = "empty";
@@ -120,13 +149,7 @@ void setup() {
 
 }
 
-void stop() {
-  exec("osascript -e \'quit app \"HandPose-OSC\"\'");
-   exec("osascript -e \'quit app \"Wekinator\"\'");
-  println("test");
-  
-  
-} 
+
 
 private void prepareExitHandler() {
 
@@ -155,6 +178,22 @@ System.out.println("SHUTDOWN HOOK");
 
 }
 
+public void startRecording(int i) {
+  OscMessage msg = new OscMessage("/wekinator/control/startDtwRecording");
+  msg.add(i); 
+  //msg.add((float)mouseY);
+  oscP5.send(msg, myRemoteLocation);
+}
+
+public void stopRecording() {
+  OscMessage msg = new OscMessage("/wekinator/control/stopDtwRecording"); 
+  //msg.add((float)mouseY);
+  oscP5.send(msg, myRemoteLocation);
+}
+  
+  
+
+
 void draw() {
     //sendOsc();
     
@@ -171,27 +210,67 @@ public void controlEvent(ControlEvent theEvent) {
 
 // function colorA will receive changes from 
 // controller with name colorA
-public void colorA(int theValue) {
+public void Record_output1(int theValue) {
   println("a button event from colorA: "+theValue);
-  c1 = c2;
-  c2 = color(0,160,100);
+  //c1 = c2;
+  //c2 = color(0,160,100);
+  startRecording(1);
+  
+}
+
+public void Record_output2(int theValue) {
+  println("a button event from colorA: "+theValue);
+  //c1 = c2;
+  //c2 = color(0,160,100);
+  startRecording(2);
+  
+}
+
+public void Record_output3(int theValue) {
+  println("a button event from colorA: "+theValue);
+  //c1 = c2;
+  //c2 = color(0,160,100);
+  startRecording(3);
+  
+}
+
+public void Record_output4(int theValue) {
+  println("a button event from colorA: "+theValue);
+  //c1 = c2;
+  //c2 = color(0,160,100);
+  startRecording(4);
+  
+}
+
+public void Record_output5(int theValue) {
+  println("a button event from colorA: "+theValue);
+  //c1 = c2;
+  //c2 = color(0,160,100);
+  startRecording(5);
+  
 }
 
 // function colorB will receive changes from 
 // controller with name colorB
-public void colorB(int theValue) {
-  println("a button event from colorB: "+theValue);
-  c1 = c2;
-  c2 = color(150,0,0);
+public void Stop_Recording(int theValue) {
+  //println("a button event from colorB: "+theValue);
+  //c1 = c2;
+  //c2 = color(150,0,0);
+  stopRecording();
 }
 
-// function colorC will receive changes from 
-// controller with name colorC
-public void colorC(int theValue) {
-  println("a button event from colorC: "+theValue);
-  c1 = c2;
-  c2 = color(255,255,0);
+
+public void Show_Video() {
+  exec("killall", "HandPose-OSC");
+  launch(sketchPath + "/HandPose-OSC_larg3.app");
 }
+
+public void Hide_Video() {
+  exec("killall", "HandPose-OSC_large");
+  launch(sketchPath + "/HandPose-OSC.app");
+}
+
+
 
 public void play(int theValue) {
   println("a button event from buttonB: "+theValue);
@@ -199,10 +278,10 @@ public void play(int theValue) {
   c2 = color(0,0,0);
 }
 
-void sendOsc() {
+void sendOsc(String text) {
   OscMessage msg = new OscMessage("/wek/inputs");
-  msg.add((float)mouseX); 
-  msg.add((float)mouseY);
+  msg.add(text); 
+  //msg.add((float)mouseY);
   oscP5.send(msg, myRemoteLocation);
 }
 
