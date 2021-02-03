@@ -21,7 +21,7 @@
     <maxSizeInExamples>0</maxSizeInExamples>
     <minSizeInDownsampledExamples>2147483647</minSizeInDownsampledExamples>
     <maxSizeInDownsampledExamples>0</maxSizeInDownsampledExamples>
-    <maxLengthToRetainDuringRun>2147483647</maxLengthToRetainDuringRun>
+    <maxLengthToRetainDuringRun>0</maxLengthToRetainDuringRun>
     <numTotalExamples>0</numTotalExamples>
     <numInputs>63</numInputs>
     <downsampleFactor>1</downsampleFactor>
@@ -79,7 +79,73 @@
     </gestureOscMessages>
     <outputOscMessage>output</outputOscMessage>
   </myOutput>
-  <distanceFunction class="com.util.EuclideanDistance"/>
+  <distanceFunction class="wekimini.learning.dtw.EuclideanDistanceWithInputSelection">
+    <inputMask>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+      <boolean>true</boolean>
+    </inputMask>
+  </distanceFunction>
   <selectedInputs>
     <boolean>true</boolean>
     <boolean>true</boolean>

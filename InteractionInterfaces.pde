@@ -48,9 +48,16 @@ void setup() {
   
   prepareExitHandler();
   
-  size(430,600);
+  size(440,600);
   noStroke();
   cp5 = new ControlP5(this);
+  
+  cp5.addTextlabel("label")
+                    .setText("Use WekiMiniRunner to save Project \n -> File -> Save")
+                    .setPosition(10,350)
+                    .setColorValue(0xffffff00)
+                    .setFont(createFont("Georgia",10))
+                    ;
   
   // create a new button with name 'buttonA'
   cp5.addButton("Record_output1")
@@ -58,59 +65,94 @@ void setup() {
      .setPosition(10,10)
      .setSize(200,19)
      ;
+     
+  cp5.addTextlabel("label2")
+                    .setText("default: swipe right")
+                    .setPosition(10,28)
+                    .setColorValue(0xffffff00)
+                    .setFont(createFont("Georgia",10))
+                    ;
   
   // and add another 2 buttons
   cp5.addButton("Record_output2")
      .setValue(2)
-     .setPosition(10,30)
-     .setSize(200,19)
-     ;
-     
-  cp5.addButton("Record_output3")
-     .setValue(3)
      .setPosition(10,50)
      .setSize(200,19)
      ;
-  
-  cp5.addButton("Record_output4")
-     .setValue(4)
-     .setPosition(10,70)
-     .setSize(200,19)
-     ;
-  
-  cp5.addButton("Record_output5")
-     .setValue(5)
+     
+  cp5.addTextlabel("label3")
+                    .setText("default: swipe left")
+                    .setPosition(10,68)
+                    .setColorValue(0xffffff00)
+                    .setFont(createFont("Georgia",10))
+                    ;
+     
+  cp5.addButton("Record_output3")
+     .setValue(3)
      .setPosition(10,90)
      .setSize(200,19)
      ;
+  
+  cp5.addTextlabel("label4")
+                    .setText("default: open palm")
+                    .setPosition(10,108)
+                    .setColorValue(0xffffff00)
+                    .setFont(createFont("Georgia",10))
+                    ;
+  
+  cp5.addButton("Record_output4")
+     .setValue(4)
+     .setPosition(10,130)
+     .setSize(200,19)
+     ;
+     
+  cp5.addTextlabel("label5")
+                    .setText("default: close palm")
+                    .setPosition(10,148)
+                    .setColorValue(0xffffff00)
+                    .setFont(createFont("Georgia",10))
+                    ;
+  
+  cp5.addButton("Record_output5")
+     .setValue(5)
+     .setPosition(10,170)
+     .setSize(200,19)
+     ;
+     
+   cp5.addTextlabel("label6")
+                    .setText("default: thumbs up")
+                    .setPosition(10,188)
+                    .setColorValue(0xffffff00)
+                    .setFont(createFont("Georgia",10))
+                    ;
      
   cp5.addButton("Stop_Recording")
      .setValue(0)
-     .setPosition(10,120)
+     .setPosition(10,210)
      .setSize(200,19)
      ;
 
  cp5.addButton("Show_Video")
      .setValue(128)
      .setPosition(220,10)
-     .setSize(200,19)
+     .setSize(100,19)
      ;
      
   cp5.addButton("Hide_Video")
      .setValue(128)
-     .setPosition(220,30)
-     .setSize(200,19)
+     .setPosition(330,10)
+     .setSize(100,19)
      ;
  
   cp5.addButton("Start")
      .setValue(128)
-     .setPosition(140,300)
+     .setPosition(140,320)
      .updateSize()
      ;
      
   cp5.addButton("Stop")
      .setValue(128)
-     .setPosition(210,300)
+     .setPosition(210,320)
      .updateSize()
      ;
   
@@ -294,35 +336,35 @@ void sendOsc(String text) {
 void oscEvent(OscMessage theOscMessage) {
   /* print the address pattern and the typetag of the received OscMessage */
   if(theOscMessage.checkAddrPattern("/output_1")==true){
-    println("### FUCKFUCKFUNK.");
+    //println("### FUCKFUCKFUNK.");
           robot.setAutoDelay(250);
           robot.keyPress(KeyEvent.VK_CONTROL);
           robot.keyPress(KeyEvent.VK_UP);
           robot.keyRelease(KeyEvent.VK_UP);
           robot.keyRelease(KeyEvent.VK_CONTROL);
   }else if(theOscMessage.checkAddrPattern("/output_2")==true){
-    println("output 2.");
+    //println("output 2.");
           robot.setAutoDelay(250);
           robot.keyPress(KeyEvent.VK_CONTROL);
           robot.keyPress(KeyEvent.VK_UP);
           robot.keyRelease(KeyEvent.VK_UP);
           robot.keyRelease(KeyEvent.VK_CONTROL);
   }else if(theOscMessage.checkAddrPattern("/output_3")==true){
-    println("output 3.");
+    //println("output 3.");
           robot.setAutoDelay(250);
           robot.keyPress(KeyEvent.VK_CONTROL);
           robot.keyPress(KeyEvent.VK_RIGHT);
           robot.keyRelease(KeyEvent.VK_RIGHT);
           robot.keyRelease(KeyEvent.VK_CONTROL);
   }else if(theOscMessage.checkAddrPattern("/output_4")==true){
-    println("output 4.");
+    //println("output 4.");
           robot.setAutoDelay(250);
           robot.keyPress(KeyEvent.VK_CONTROL);
           robot.keyPress(KeyEvent.VK_Y);
           robot.keyRelease(KeyEvent.VK_Y);
           robot.keyRelease(KeyEvent.VK_CONTROL);
         }else if(theOscMessage.checkAddrPattern("/output_5")==true){
-    println("output 5.");
+    //println("output 5.");
           robot.setAutoDelay(250);
           robot.keyPress(KeyEvent.VK_CONTROL);
           robot.keyPress(KeyEvent.VK_Y);
