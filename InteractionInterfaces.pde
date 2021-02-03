@@ -86,7 +86,7 @@ void setup() {
      
   cp5.addButton("Stop_Recording")
      .setValue(0)
-     .setPosition(10,90)
+     .setPosition(10,120)
      .setSize(200,19)
      ;
 
@@ -191,8 +191,6 @@ public void stopRecording() {
   oscP5.send(msg, myRemoteLocation);
 }
   
-  
-
 
 void draw() {
     //sendOsc();
@@ -262,21 +260,28 @@ public void Stop_Recording(int theValue) {
 
 public void Show_Video() {
   exec("killall", "HandPose-OSC");
-  launch(sketchPath + "/HandPose-OSC_larg3.app");
+  launch(sketchPath + "/HandPose-OSC_large.app");
 }
 
 public void Hide_Video() {
-  exec("killall", "HandPose-OSC_large");
+  exec("killall", "HandPose-OSC");
   launch(sketchPath + "/HandPose-OSC.app");
 }
 
-
-
-public void play(int theValue) {
-  println("a button event from buttonB: "+theValue);
-  c1 = c2;
-  c2 = color(0,0,0);
+public void Start() {
+  OscMessage msg = new OscMessage("/wekinator/control/startRunning"); 
+  //msg.add((float)mouseY);
+  oscP5.send(msg, myRemoteLocation);
 }
+
+public void Stop() {
+  OscMessage msg = new OscMessage("/wekinator/control/stopRunning"); 
+  //msg.add((float)mouseY);
+  oscP5.send(msg, myRemoteLocation);
+}
+
+
+
 
 void sendOsc(String text) {
   OscMessage msg = new OscMessage("/wek/inputs");
