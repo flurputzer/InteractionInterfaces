@@ -10,8 +10,8 @@ This programm uses a [modified](https://github.com/brannondorsey/wekimini) versi
 Additionaly it uses both a [modified](https://yoyling.herokuapp.com/https/github.com/gonski/HandPose-OSC) and the usual version of [HandPose-OSC](https://github.com/faaip/HandPose-OSC)
 
 
-##HandPose-OSC
+## HandPose-OSC
 ![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/HandPoseLarge.png)
 
-##HandPose-OSC_mini
+## HandPose-OSC_mini
 ![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/HandPoseSmall.png)
