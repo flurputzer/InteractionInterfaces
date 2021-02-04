@@ -31,11 +31,11 @@ String sketchPath;
 
 String[] Keys;
 
-int[][] defaultValues = { {25, 106}, //ctrl + RIGHT
-                          {25, 75},//ctrl + LEFT
-                          {25, 119},//ctrl + UP 
-                          {25, 29},//ctrl + DOWN 
-                          {125, 40},//NONE + F11 
+int[][] defaultValues = { {25, 123}, //ctrl + y 
+                          {25, 122},//ctrl + x 
+                          {25, 17},//ctrl + c 
+                          {25, 120},//ctrl + v 
+                          {25, 11},//ctrl + b 
                         };
 
 
@@ -264,7 +264,7 @@ void setup() {
   sketchPath = sketchPath();
   
   //!!! change this before bundling to .app
-  //sketchPath = sketchPath + "/InteractionInterfaces.app/Contents/MacOS";
+  sketchPath = sketchPath + "/InteractionInterfaces.app/Contents/MacOS";
   
   launch(sketchPath + "/HandPose-OSC.app");
   //exec("java", "-jar", sketchPath + "/Wekinator/WekiMini.jar", sketchPath + "/WekinatorProjects" +"/" + wekinatorProjectName + "/" + wekinatorProjectName + ".wekproj");
@@ -458,7 +458,7 @@ public void Stop() {
 
 
 public void populateKeys() {
-  Keys = new String[126];
+  Keys = new String[125];
 Keys[0] = "VK_0";
 Keys[1] = "VK_1";
 Keys[2] = "VK_2"; 
@@ -584,7 +584,6 @@ Keys[121] = "VK_W";
 Keys[122] = "VK_X"; 
 Keys[123] = "VK_Y"; 
 Keys[124] = "VK_Z";
-Keys[125] = "NONE";
 
 }
 

@@ -1,16 +1,43 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import oscP5.*; 
+import netP5.*; 
+import controlP5.*; 
+import java.awt.AWTException; 
+import java.awt.Robot; 
+import java.awt.event.KeyEvent; 
+
+import netP5.*; 
+import oscP5.*; 
+import controlP5.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class InteractionInterfaces extends PApplet {
+
 /**
 * REALLY simple processing sketch that sends mouse x and y position to wekinator
 * This sends 2 input values to port 6448 using message /wek/inputs
 **/
 
-import oscP5.*;
-import netP5.*;
 
-import controlP5.*;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+
+
+
+
+
+
 
 
 
@@ -31,11 +58,11 @@ String sketchPath;
 
 String[] Keys;
 
-int[][] defaultValues = { {25, 106}, //ctrl + RIGHT
-                          {25, 75},//ctrl + LEFT
-                          {25, 119},//ctrl + UP 
-                          {25, 29},//ctrl + DOWN 
-                          {125, 40},//NONE + F11 
+int[][] defaultValues = { {25, 123}, //ctrl + y 
+                          {25, 122},//ctrl + x 
+                          {25, 17},//ctrl + c 
+                          {25, 120},//ctrl + v 
+                          {25, 11},//ctrl + b 
                         };
 
 
@@ -70,12 +97,12 @@ int sendPort = 8008;
 
 String wekinatorProjectName = "Project_1";
 
-void setup() {
+public void setup() {
 
   prepareExitHandler();
   populateKeys();
   
-  size(440,280);
+  
   noStroke();
   cp5 = new ControlP5(this);
   
@@ -264,7 +291,7 @@ void setup() {
   sketchPath = sketchPath();
   
   //!!! change this before bundling to .app
-  //sketchPath = sketchPath + "/InteractionInterfaces.app/Contents/MacOS";
+  sketchPath = sketchPath + "/InteractionInterfaces.app/Contents/MacOS";
   
   launch(sketchPath + "/HandPose-OSC.app");
   //exec("java", "-jar", sketchPath + "/Wekinator/WekiMini.jar", sketchPath + "/WekinatorProjects" +"/" + wekinatorProjectName + "/" + wekinatorProjectName + ".wekproj");
@@ -295,7 +322,7 @@ void setup() {
 
 }
 
-void customize(DropdownList ddl, int defaultValue) {
+public void customize(DropdownList ddl, int defaultValue) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
@@ -367,12 +394,12 @@ public void stopRecording() {
 }
   
 
-void draw() {
+public void draw() {
     //sendOsc();
     
     background(myColor);
   myColor = lerpColor(c1,c2,n);
-  n += (1-n)* 0.1; 
+  n += (1-n)* 0.1f; 
  
 }
 
@@ -458,7 +485,7 @@ public void Stop() {
 
 
 public void populateKeys() {
-  Keys = new String[126];
+  Keys = new String[125];
 Keys[0] = "VK_0";
 Keys[1] = "VK_1";
 Keys[2] = "VK_2"; 
@@ -584,7 +611,6 @@ Keys[121] = "VK_W";
 Keys[122] = "VK_X"; 
 Keys[123] = "VK_Y"; 
 Keys[124] = "VK_Z";
-Keys[125] = "NONE";
 
 }
 
@@ -593,7 +619,7 @@ Keys[125] = "NONE";
 
 
 
-void sendOsc(String text) {
+public void sendOsc(String text) {
   OscMessage msg = new OscMessage("/wek/inputs");
   msg.add(text); 
   //msg.add((float)mouseY);
@@ -601,7 +627,7 @@ void sendOsc(String text) {
 }
 
 /* incoming osc message are forwarded to the oscEvent method. */
-void oscEvent(OscMessage theOscMessage) {
+public void oscEvent(OscMessage theOscMessage) {
   /* print the address pattern and the typetag of the received OscMessage */
   if(theOscMessage.checkAddrPattern("/output_1")==true){
     println("output 1.");
@@ -640,7 +666,7 @@ void oscEvent(OscMessage theOscMessage) {
   }
 }
 
-void convertKeyPress(String command) {
+public void convertKeyPress(String command) {
   switch (command) {
    case "VK_0":
    robot.keyPress(KeyEvent.VK_0);
@@ -1117,7 +1143,7 @@ void convertKeyPress(String command) {
   }
 }
 
-void convertKeyRelease( String command) {
+public void convertKeyRelease( String command) {
   switch (command) {
    case "VK_0":
    robot.keyRelease(KeyEvent.VK_0);
@@ -1591,5 +1617,15 @@ void convertKeyRelease( String command) {
    case "VK_Z":
    robot.keyRelease(KeyEvent.VK_Z);
    break;
+  }
+}
+  public void settings() {  size(440,280); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "InteractionInterfaces" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
   }
 }
