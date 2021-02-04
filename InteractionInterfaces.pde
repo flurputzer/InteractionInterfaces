@@ -264,7 +264,7 @@ void setup() {
   sketchPath = sketchPath();
   
   //!!! change this before bundling to .app
-  //sketchPath = sketchPath + "/InteractionInterfaces.app/Contents/MacOS";
+  sketchPath = sketchPath + "/InteractionInterfaces.app/Contents/MacOS";
   
   launch(sketchPath + "/HandPose-OSC.app");
   //exec("java", "-jar", sketchPath + "/Wekinator/WekiMini.jar", sketchPath + "/WekinatorProjects" +"/" + wekinatorProjectName + "/" + wekinatorProjectName + ".wekproj");
