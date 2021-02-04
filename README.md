@@ -22,7 +22,7 @@ Additionaly it uses both a [modified](https://yoyling.herokuapp.com/https/github
 # HowToUse
 In order to use the app a few seetings have to be changed in MacOS:
 
-
+![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/Settings1.png)
 
 ![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/Settings2.png)
 
