@@ -26,7 +26,7 @@ In order to use the app a few seetings have to be changed in MacOS:
 
 ![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/Settings2.png)
 
-and **both** HandPose-OSC and HandPose-OSC_mini have to be active on all desktops:
+and **both** HandPose-OSC and HandPose-OSC_mini have to be active on all desktops (you have to have multiple desktops in order for this to show up):
 
 ![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/Settings3.png)
 
