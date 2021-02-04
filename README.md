@@ -7,6 +7,9 @@ If you just want to use the app the "InteractionInterfaces.app" is included in t
 # HowToUse
 This programm uses a [modified](https://github.com/brannondorsey/wekimini) version of [Wekinator](http://www.wekinator.org/) in order to open wekinator with a preloaded project.
 
+## Wekinator
+![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/Wekinator.png)
+
 Additionaly it uses both a [modified](https://yoyling.herokuapp.com/https/github.com/gonski/HandPose-OSC) and the usual version of [HandPose-OSC](https://github.com/faaip/HandPose-OSC)
 
 
