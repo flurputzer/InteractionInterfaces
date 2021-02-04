@@ -30,5 +30,13 @@ and **both** HandPose-OSC and HandPose-OSC_mini have to be active on all desktop
 
 ![alt text](https://github.com/flurputzer/InteractionInterfaces/blob/main/Screenshots/Settings3.png)
 
+## What it does
+The app is pre configured and wekinator is pre trained on the gestures that are described in the gui.
+Just press **start** and try the gestures in order to control MAcos through gesture activated shortcuts.
+You can change the shortcuts through the dropdown menus in order to change what the egstures do, you can also control other applications like this.
+You can also continue to train the gesture using wekinator, you can either use the wekinator gui or the provided gui to train the gestures.
+Dont forget to click on **file** -> **save** in order to save your training.
+
+
 
 
