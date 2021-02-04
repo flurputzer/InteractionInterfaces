@@ -1,6 +1,6 @@
 /**
-* REALLY simple processing sketch that sends mouse x and y position to wekinator
-* This sends 2 input values to port 6448 using message /wek/inputs
+* 
+*
 **/
 
 import oscP5.*;
@@ -631,6 +631,7 @@ void oscEvent(OscMessage theOscMessage) {
         }else if(theOscMessage.checkAddrPattern("/output_5")==true){
     println("output 5.");
           convertKeyPress(d51.getLabel());
+          println(d51.getLabel());
           convertKeyPress(d52.getLabel());
           convertKeyRelease(d51.getLabel());
           convertKeyRelease(d52.getLabel());
@@ -1114,6 +1115,9 @@ void convertKeyPress(String command) {
    case "VK_Z":
    robot.keyPress(KeyEvent.VK_Z);
    break;
+   
+   case "NONE":
+   break;
   }
 }
 
@@ -1591,5 +1595,9 @@ void convertKeyRelease( String command) {
    case "VK_Z":
    robot.keyRelease(KeyEvent.VK_Z);
    break;
+   
+   case "NONE":
+   break;
+   
   }
 }
